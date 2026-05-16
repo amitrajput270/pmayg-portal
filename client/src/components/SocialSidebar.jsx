@@ -4,8 +4,8 @@ import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
 
 export default function SocialSidebar() {
   return (
-    <div className="fixed right-10 top-[35%] z-50 object-cover">
-      <div className="bg-[#e5e7eb] shadow-md">
+    <div className="absolute right-10 top-[35%] z-50 object-cover">
+      <div className="shadow-md rounded-full bg-white flex flex-col items-center">
         <button className="w-16 h-16 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-4xl">
           <FiX />
         </button>

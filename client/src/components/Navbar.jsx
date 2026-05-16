@@ -1,11 +1,9 @@
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import SocialSidebar from "./SocialSidebar";
-
 export default function Navbar() {
   return (
-    <header className="bg-[#f5f5f5] border-b border-gray-200">
+    <header className="border-b border-gray-200">
       <div className="max-w-[1500px] mx-auto px-8 py-5 flex items-center justify-between">
         <div className="flex items-center gap-10">
           <div className="flex items-center gap-2">

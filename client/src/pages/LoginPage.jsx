@@ -1,198 +1,238 @@
-// LoginPage.jsx
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import "./LoginPage.css";
+import { useEffect, useState } from "react";
 
-const LoginPage = () => {
-  const [financialYear, setFinancialYear] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [captchaInput, setCaptchaInput] = useState("");
-  const [captchaDisplay, setCaptchaDisplay] = useState("2 9 9 6 9 4");
-  const [message, setMessage] = useState({ text: "", type: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+import loginIllustration from "../assets/login-illustration.svg";
+import logo from "../assets/logo.svg";
 
-  const currentRawCaptchaRef = useRef("299694");
+import { FiChevronDown } from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa";
+import { FiKey } from "react-icons/fi";
 
-  const generateRandomSpacedCaptcha = useCallback(() => {
-    let digits = "";
-    for (let i = 0; i < 6; i++) {
-      digits += Math.floor(Math.random() * 10).toString();
-    }
-    return digits.split("").join(" ");
-  }, []);
+import Navbar from "../components/Navbar";
 
-  const refreshCaptcha = useCallback(() => {
-    const newSpaced = generateRandomSpacedCaptcha();
-    setCaptchaDisplay(newSpaced);
-    currentRawCaptchaRef.current = newSpaced.replace(/\s/g, "");
-    setCaptchaInput("");
-    if (message.text.includes("Captcha") || message.text.includes("mismatch")) {
-      setMessage({ text: "", type: "" });
-    }
-  }, [generateRandomSpacedCaptcha, message.text]);
+export default function LoginPage() {
+  const [formData, setFormData] = useState({
+    financialYear: "",
+    username: "",
+    password: "",
+    captcha: "",
+  });
 
-  const showMessage = useCallback((text, type = "error") => {
-    setMessage({ text, type });
-    if (type !== "success") {
-      setTimeout(() => {
-        setMessage((prev) =>
-          prev.text === text ? { text: "", type: "" } : prev,
-        );
-      }, 4000);
-    }
-  }, []);
+  const [generatedCaptcha, setGeneratedCaptcha] = useState("");
 
-  const performLogin = useCallback(async () => {
-    if (!financialYear) {
-      showMessage("Please select a Financial Year.", "error");
-      return;
-    }
-    if (!username.trim()) {
-      showMessage("Username cannot be empty.", "error");
-      return;
-    }
-    if (!password) {
-      showMessage("Password cannot be empty.", "error");
-      return;
-    }
-    if (!captchaInput.trim()) {
-      showMessage("Please type the Captcha.", "error");
-      return;
-    }
+  const [errors, setErrors] = useState({});
 
-    const normalizedCaptcha = captchaInput.replace(/\s/g, "");
-    if (!/^\d+$/.test(normalizedCaptcha)) {
-      showMessage("Captcha must contain only digits.", "error");
-      setCaptchaInput("");
-      return;
-    }
+  // GENERATE CAPTCHA
+  const generateCaptcha = () => {
+    const captcha = Math.floor(100000 + Math.random() * 900000).toString();
 
-    if (normalizedCaptcha !== currentRawCaptchaRef.current) {
-      showMessage("Captcha mismatch. Please type correct code.", "error");
-      setCaptchaInput("");
-      return;
-    }
+    setGeneratedCaptcha(captcha);
+  };
 
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    showMessage(`Login successful! Welcome ${username}.`, "success");
-
-    setPassword("");
-    setCaptchaInput("");
-    refreshCaptcha();
-    setIsSubmitting(false);
-  }, [
-    financialYear,
-    username,
-    password,
-    captchaInput,
-    showMessage,
-    refreshCaptcha,
-  ]);
-
-  const handleKeyPress = useCallback(
-    (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        performLogin();
-      }
-    },
-    [performLogin],
-  );
-
+  // PAGE LOAD CAPTCHA
   useEffect(() => {
-    setCaptchaDisplay("2 9 9 6 9 4");
-    currentRawCaptchaRef.current = "299694";
+    generateCaptcha();
   }, []);
+
+  // HANDLE INPUT CHANGE
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // VALIDATION
+  const validate = () => {
+    let newErrors = {};
+
+    if (!formData.financialYear) {
+      newErrors.financialYear = "Financial year is required";
+    }
+
+    if (!formData.username) {
+      newErrors.username = "Username is required";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    if (!formData.captcha) {
+      newErrors.captcha = "Captcha is required";
+    }
+
+    if (formData.captcha !== generatedCaptcha) {
+      newErrors.captcha = "Invalid captcha";
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // FORM SUBMIT
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    console.log("Login Data:", formData);
+
+    alert("Login Successful");
+
+    // API CALL HERE
+    /*
+      axios.post('/login', formData)
+    */
+  };
 
   return (
-    <div className="login-page">
-      {/* Header with emblem and title */}
-      <div className="header">
-        <div className="emblem"></div>
-        <div className="title-section">
-          <h1>Block Panchayat</h1>
-          <p>Government of India</p>
-        </div>
-      </div>
+    <>
+      <Navbar />
+      <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-16">
+        <div className="w-full max-w-[1500px] bg-[#f8f8f8] rounded-[18px] shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+          <div className="grid lg:grid-cols-2 gap-10 items-center p-10 lg:p-16">
+            {/* LEFT SIDE */}
+            <div>
+              <img src={logo} alt="logo" className="w-[150px]" />
 
-      {/* Login Card */}
-      <div className="login-card">
-        <h2>Login</h2>
+              <div className="flex justify-center mt-16">
+                <img
+                  src={loginIllustration}
+                  alt="login"
+                  className="w-full max-w-[560px]"
+                />
+              </div>
+            </div>
 
-        <div className="field">
-          <label>Financial Year</label>
-          <select
-            value={financialYear}
-            onChange={(e) => setFinancialYear(e.target.value)}
-            onKeyPress={handleKeyPress}
-          >
-            <option value="">- Select Financial Year -</option>
-            <option value="2024-2025">2024-2025</option>
-            <option value="2023-2024">2023-2024</option>
-            <option value="2022-2023">2022-2023</option>
-            <option value="2025-2026">2025-2026</option>
-          </select>
-        </div>
+            {/* RIGHT SIDE */}
+            <div className="max-w-[650px] w-full mx-auto">
+              <h2 className="text-[clamp(20px,2vw,64px)] font-bold text-[#183554] text-center lg:text-left">
+                Login Block Panchayat
+              </h2>
 
-        <div className="field">
-          <label>Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Enter username"
-          />
-        </div>
+              <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+                {/* FINANCIAL YEAR */}
+                <div>
+                  <label className="block text-[20px] font-medium text-[#3d3d3d] mb-3">
+                    Financial Year
+                  </label>
 
-        <div className="field">
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Enter password"
-          />
-        </div>
+                  <div className="relative">
+                    <select
+                      name="financialYear"
+                      value={formData.financialYear}
+                      onChange={handleChange}
+                      className="w-full h-[72px] border border-[#cfcfcf] rounded-[8px] bg-transparent px-6 text-[22px] appearance-none outline-none"
+                    >
+                      <option value="">Select Financial Year</option>
 
-        <div className="field">
-          <label>Captcha</label>
-          <div className="captcha-container">
-            <div className="captcha-digits">{captchaDisplay}</div>
-            <input
-              type="text"
-              value={captchaInput}
-              onChange={(e) => setCaptchaInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type Captcha"
-            />
-            <button
-              type="button"
-              className="captcha-refresh"
-              onClick={refreshCaptcha}
-            >
-              Get Captcha
-            </button>
+                      <option value="2024-2025">2024-2025</option>
+
+                      <option value="2025-2026">2025-2026</option>
+                    </select>
+
+                    <FiChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-[32px] text-[#666]" />
+                  </div>
+
+                  {errors.financialYear && (
+                    <p className="text-red-500 mt-2">{errors.financialYear}</p>
+                  )}
+                </div>
+
+                {/* USERNAME */}
+                <div>
+                  <div className="flex border border-[#cfcfcf] rounded-[8px] overflow-hidden h-[72px]">
+                    <div className="w-[72px] bg-[#b5b5b5] flex items-center justify-center">
+                      <FaRegUser className="text-white text-[28px]" />
+                    </div>
+
+                    <input
+                      type="text"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleChange}
+                      placeholder="Username"
+                      className="flex-1 px-5 text-[22px] bg-transparent outline-none"
+                    />
+                  </div>
+
+                  {errors.username && (
+                    <p className="text-red-500 mt-2">{errors.username}</p>
+                  )}
+                </div>
+
+                {/* PASSWORD */}
+                <div>
+                  <div className="flex border border-[#cfcfcf] rounded-[8px] overflow-hidden h-[72px]">
+                    <div className="w-[72px] bg-[#b5b5b5] flex items-center justify-center">
+                      <FiKey className="text-white text-[28px]" />
+                    </div>
+
+                    <input
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="Password"
+                      className="flex-1 px-5 text-[22px] bg-transparent outline-none"
+                    />
+                  </div>
+
+                  {errors.password && (
+                    <p className="text-red-500 mt-2">{errors.password}</p>
+                  )}
+                </div>
+
+                {/* CAPTCHA */}
+                <div>
+                  <label className="block text-[20px] font-medium text-[#3d3d3d] mb-3">
+                    Captcha
+                  </label>
+
+                  <input
+                    type="text"
+                    name="captcha"
+                    value={formData.captcha}
+                    onChange={handleChange}
+                    placeholder="Type Captcha"
+                    className="w-full h-[72px] border border-[#cfcfcf] rounded-[8px] bg-transparent px-6 text-[22px] outline-none"
+                  />
+
+                  {errors.captcha && (
+                    <p className="text-red-500 mt-2">{errors.captcha}</p>
+                  )}
+                </div>
+
+                {/* CAPTCHA BOX */}
+                <div className="flex items-center gap-5">
+                  <div className="w-[230px] h-[72px] bg-[#ece5da] border border-[#cfcfcf] rounded-[6px] flex items-center justify-center text-[34px] tracking-[10px] font-semibold text-[#333]">
+                    {generatedCaptcha}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={generateCaptcha}
+                    className="text-[#3f33b6] text-[24px] font-medium"
+                  >
+                    Get Captcha
+                  </button>
+                </div>
+
+                {/* LOGIN BUTTON */}
+                <button
+                  type="submit"
+                  className="w-full h-[78px] rounded-[12px] bg-[#cc802e] text-white text-[28px] font-semibold mt-8 transition hover:bg-[#b86d1d]"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-
-        <button
-          className="login-btn"
-          onClick={performLogin}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Logging in..." : "Login"}
-        </button>
-
-        {message.text && (
-          <div className={`message ${message.type}`}>{message.text}</div>
-        )}
-      </div>
-    </div>
+      </section>
+    </>
   );
-};
-
-export default LoginPage;
+}

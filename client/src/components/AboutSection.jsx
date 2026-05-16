@@ -1,97 +1,116 @@
 import aboutImage from "../assets/12704405_5006436 1.jpg";
+import arrow1 from "../assets/arrow-1.jpg";
+import arrow2 from "../assets/arrow-2.jpg";
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#f5f5f5] px-20">
-      {/* <div className="container"> */}
-      {/* Heading */}
-      <div className="text-center">
-        <p className="text-[5px] text-gray-300">
-          About PMAY-G and How It Works?
-        </p>
+    <section className="bg-[#fff] py-28 overflow-hidden">
+      <div className="max-w-[1450px] mx-auto px-8">
+        {/* TOP CONTENT */}
+        <div className="text-center">
+          <p className="text-[22px] text-gray-700">
+            About PMAY-G and How It Works?
+          </p>
 
-        <h2 className="text-[72px] leading-[90px] font-bold mt-5">
-          What is PMAY-G and
-          <br />
-          How It Works?
-        </h2>
+          <h2 className="text-[72px] leading-[90px] font-bold mt-5">
+            What is PMAY-G and How It Works?
+          </h2>
 
-        <p className="text-[28px] leading-[48px] text-gray-500 max-w-[1100px] mx-auto mt-8">
-          Enim urna consequat pellentesque urna adipiscing lacus dictumst velit
-          sed. Adipiscing condimentum viverra tincidunt fermentum.
-        </p>
+          <p className="max-w-[1100px] mx-auto text-[30px] leading-[52px] text-[#646b7c] mt-8">
+            Enim urna consequat pellentesque urna adipiscing lacus dictumst
+            velit sed. Adipiscing condimentum viverra tincidunt fermentum.
+          </p>
 
-        <button className="mt-10 text-[#2156c9] text-[24px] font-semibold">
-          Learn More About PMAYG →
-        </button>
-      </div>
-
-      {/* Main Grid */}
-      <div className="grid grid-cols-3 gap-16 items-center mt-28">
-        {/* Left */}
-        <div className="space-y-16">
-          <div>
-            <p className="text-[#d48842] text-[28px] uppercase">Step 1</p>
-
-            <h3 className="text-[52px] leading-[65px] font-bold mt-4">
-              Get Registered
-            </h3>
-
-            <p className="text-[28px] leading-[48px] text-gray-500 mt-8">
-              Complete registration process for PMAY-G housing scheme.
-            </p>
-
-            <button className="mt-8 text-[#2156c9] text-[24px] font-semibold">
-              Learn More →
-            </button>
-          </div>
-
-          <div className="bg-[#f4f8fc] border border-[#dbe8f4] rounded-[30px] p-10">
-            <p className="text-[#d48842] text-[28px] uppercase">Step 2</p>
-
-            <h3 className="text-[48px] leading-[60px] font-bold mt-4">
-              Check FTO Payment
-            </h3>
-
-            <p className="text-[26px] leading-[46px] text-gray-500 mt-8">
-              Easily verify payment and transfer details.
-            </p>
-
-            <button className="mt-8 text-[#2156c9] text-[24px] font-semibold">
-              Learn More →
-            </button>
-          </div>
+          <button className="text-[#2156c9] text-[24px] font-medium mt-10">
+            Learn More About PMAYG ≫
+          </button>
         </div>
 
-        {/* Center Image */}
-        {/* <div className="flex justify-center">
+        {/* MAIN GRID */}
+        <div className="relative grid grid-cols-3 gap-10 mt-28">
+          {/* LEFT COLUMN */}
+          <div className="relative">
+            {/* STEP 1 */}
+            <div className="max-w-[430px] ml-10">
+              <p className="text-[#d68a46] text-[20px] uppercase">Step 1</p>
+
+              <h3 className="text-[30px] leading-[70px] font-bold mt-4">
+                Get Registered
+              </h3>
+
+              <p className="text-[28px] leading-[50px] text-[#636b7d] mt-10">
+                Enim urna consequat pellentesque urna adipiscing lacus dictumst
+                velit sed.
+              </p>
+
+              <button className="text-[#2156c9] text-[24px] font-medium mt-10">
+                Learn How to Get Registered ≫
+              </button>
+            </div>
+            {/* STEP 2 */}
+            <div className="bg-[#f4f8fc] border border-[#dbe8f4] rounded-[28px] p-12 mt-48">
+              <p className="text-[#d68a46] text-[20px] uppercase">Step 2</p>
+
+              <h3 className="text-[30px] leading-[66px] font-bold mt-4">
+                Check FTO
+                <br />
+                Payment
+              </h3>
+
+              <p className="text-[28px] leading-[48px] text-[#636b7d] mt-10">
+                Enim urna consequat pellentesque urna adipiscing lacus dictumst
+                velit sed.
+              </p>
+
+              <button className="text-[#2156c9] text-[24px] font-medium mt-10">
+                Learn How to Check FTO Payment ≫
+              </button>
+            </div>
+          </div>
+
+          {/* CENTER IMAGE */}
+          <div className="flex justify-right items-start pt-12">
             <img
               src={aboutImage}
               alt="about"
-              className="w-full max-w-[550px]"
+              className="w-full max-w-[650px]"
             />
-          </div> */}
+          </div>
 
-        {/* Right */}
-        <div className="flex items-end h-full">
-          <div className="bg-[#f4f8fc] border border-[#dbe8f4] rounded-[30px] p-10">
-            <p className="text-[#d48842] text-[28px] uppercase">Step 3</p>
+          {/* RIGHT COLUMN */}
+          <div className="relative flex items-end pb-10">
+            {/* ARROW */}
+            <img
+              src={arrow1}
+              alt="arrow"
+              className="absolute -left-[850px]  bottom-[160px] text-[#d8bb77] text-[140px] top-[405px] h-[120px] w-[30px] rotate-[10deg]"
+            />
 
-            <h3 className="text-[48px] leading-[60px] font-bold mt-4">
-              Track Progress
-            </h3>
+            {/* STEP 3 */}
+            <div className="bg-[#f4f8fc] border border-[#dbe8f4] rounded-[28px] p-12">
+              <p className="text-[#d68a46] text-[20px] uppercase">Step 3</p>
 
-            <p className="text-[26px] leading-[46px] text-gray-500 mt-8">
-              Track construction and application progress.
-            </p>
+              <h3 className="text-[30px] leading-[66px] font-bold mt-4">
+                Track Progress
+              </h3>
 
-            <button className="mt-8 text-[#2156c9] text-[24px] font-semibold">
-              Learn More →
-            </button>
+              <p className="text-[28px] leading-[48px] text-[#636b7d] mt-10">
+                Enim urna consequat pellentesque urna adipiscing lacus dictumst
+                velit sed.
+              </p>
+
+              <button className="text-[#2156c9] text-[24px] font-medium mt-10">
+                Learn How to Track Progress ≫
+              </button>
+            </div>
+            <img
+              src={arrow2}
+              alt="arrow"
+              className="absolute -left-[300px]  bottom-[160px] text-[#d8bb77] text-[140px] top-[1000px] h-[25px] w-[140px] rotate-[10deg]"
+            />
           </div>
         </div>
       </div>
-      {/* </div> */}
     </section>
   );
 }

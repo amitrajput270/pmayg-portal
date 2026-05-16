@@ -2,7 +2,7 @@ import SocialSidebar from "./SocialSidebar";
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-[#f4f4f4] pb-40">
+    <section className="relative pb-40">
       <div className="max-w-[1500px] mx-auto px-8 pt-10">
         <div className="relative rounded overflow-hidden h-[500px]">
           <SocialSidebar />

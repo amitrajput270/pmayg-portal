@@ -6,16 +6,18 @@ import FaqSection from "../components/FaqSection";
 import Footer from "../components/Footer";
 import SuccessStories from "../components/SuccessStories";
 import AboutSection from "../components/AboutSection.jsx";
+import InfoSection from "../components/InfoCards.jsx";
 export default function HomePage() {
   return (
-    <div className="bg-[#f5f5f5] overflow-hidden">
+    <div className="bg-[#fff] overflow-hidden">
       <Navbar />
       <HeroSection />
+      <InfoSection />
       <AboutSection />
-      <HowItWorks />
       <DownloadAppSection />
       <FaqSection />
       <SuccessStories />
+      {/* <HowItWorks /> */}
       <Footer />
     </div>
   );
