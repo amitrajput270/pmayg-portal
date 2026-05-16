@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(145deg, #e9f0e6 0%, #cde0cd 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* Main card container */
+.login-container {
+  max-width: 500px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 25px 45px -12px rgba(0, 32, 0, 0.35);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.login-card {
+  padding: 2rem 2rem 2.5rem 2rem;
+}
+
+/* header with official emblem style */
+.header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #1e4a2f, #2b6e3c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  margin-bottom: 0.3rem;
+}
+
+.header .tagline {
+  font-size: 0.85rem;
+  color: #4b6e3b;
+  border-top: 1px solid #ddebd0;
+  display: inline-block;
+  padding-top: 0.4rem;
+  font-weight: 500;
+}
+
+/* form group styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1f3b1a;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+label i {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+input,
+select {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #d1dec6;
+  border-radius: 1.2rem;
+  background-color: #fefef7;
+  transition: all 0.2s;
+  font-family: inherit;
+  outline: none;
+  color: #1e2f1a;
+}
+
+input:focus,
+select:focus {
+  border-color: #2e7d3e;
+  box-shadow: 0 0 0 3px rgba(46, 125, 62, 0.2);
+  background-color: #ffffff;
+}
+
+/* captcha section specific */
+.captcha-block {
+  background: #f4f9ef;
+  border-radius: 1.4rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.captcha-digits {
+  background: #2c3a24;
+  color: #fbffea;
+  font-family: "Courier New", "Fira Code", monospace;
+  font-size: 1.9rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  padding: 0.5rem 0.2rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  user-select: none;
+  word-break: break-all;
+  background: linear-gradient(125deg, #1a2e14, #2a4a1e);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.captcha-input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.captcha-input-wrapper input {
+  flex: 2;
+  min-width: 150px;
+}
+
+.refresh-captcha-btn {
+  background: #eef3e9;
+  border: 1px solid #bdd8ab;
+  border-radius: 2rem;
+  padding: 0.7rem 1.1rem;
+  font-weight: 600;
+  color: #2b5e2a;
+  cursor: pointer;
+  transition: 0.15s;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.refresh-captcha-btn:hover {
+  background: #e2ecd9;
+  border-color: #7faa6b;
+  transform: scale(0.97);
+}
+
+.captcha-help {
+  font-size: 0.7rem;
+  color: #6a6f5e;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+/* login button */
+.login-btn {
+  width: 100%;
+  background: #1f6e3c;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  letter-spacing: 0.5px;
+}
+
+.login-btn:hover {
+  background: #0f5830;
+  transform: translateY(-1px);
+}
+
+.login-btn:active {
+  transform: translateY(1px);
+}
+
+/* financial year select default style */
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%233b5e2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+hr {
+  margin: 0.5rem 0 1rem;
+  border: 0;
+  height: 1px;
+  background: #dde6d4;
+}
+
+.demo-note {
+  text-align: center;
+  font-size: 0.7rem;
+  margin-top: 1.8rem;
+  color: #6c8270;
+  background: #f6faf2;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+/* error / message toast */
+.message-tip {
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  text-align: center;
+  color: #c0392b;
+  font-weight: 500;
+  background: #ffeae7;
+  border-radius: 2rem;
+  padding: 0.3rem 0.8rem;
+  display: inline-block;
+  width: auto;
+}
+
+.success-mock {
+  color: #2a6b3c;
+  background: #e6f4e6;
+}
+
+.footer-note {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: #5c7154;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+  .header h1 {
+    font-size: 1.6rem;
+  }
+  .captcha-digits {
+    font-size: 1.4rem;
+    letter-spacing: 0.3rem;
+  }
+}
