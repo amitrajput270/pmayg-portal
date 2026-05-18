@@ -86,6 +86,17 @@ export default function LoginPage() {
     /*
       axios.post('/login', formData)
     */
+
+    // RESET FORM
+    setFormData({
+      financialYear: "",
+      username: "",
+      password: "",
+      captcha: "",
+    });
+
+    // GENERATE NEW CAPTCHA
+    generateCaptcha();
   };
 
   return (
