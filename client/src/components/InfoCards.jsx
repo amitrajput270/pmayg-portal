@@ -42,46 +42,51 @@ export default function InfoSection() {
   ];
 
   return (
-    <section className="bg-[#f5f5f5] py-20 overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="bg-[#f5f5f5] py-16 lg:py-24 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-8">
+        <div className="grid lg:grid-cols-[55%_45%] gap-10 items-center">
           {/* LEFT CONTENT */}
           <div>
             {/* TITLE */}
-            <h2 className="text-[clamp(34px,4vw,72px)] leading-[1.1] font-bold text-black">
+            <h2 className="text-[clamp(38px,4vw,72px)] leading-[1.08] font-bold text-black max-w-[850px]">
               Pradhan Mantri Awaas Yojana-Gramin
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="text-[clamp(18px,2vw,28px)] leading-[1.8] text-[#636b7d] mt-8 max-w-[900px]">
+            <p className="text-[clamp(18px,1.4vw,24px)] leading-[1.7] text-[#636b7d] mt-6 max-w-[760px]">
               Lorem ipsum dolor sit amet consectetur. Ultricies amet posuere ac
               ultrices lectus tellus augue nunc. Semper aliquet condimentum
               rutrum luctus viverra.
             </p>
 
             {/* CARDS */}
-            <div className="grid md:grid-cols-2 gap-8 mt-16">
+            <div className="grid sm:grid-cols-2 gap-6 mt-12">
               {cards.map((card, index) => (
                 <div key={index}>
+                  {/* CARD */}
                   <div
-                    className={`${card.bg} border ${card.border} rounded-[24px] p-8 min-h-[290px]`}
+                    className={`${card.bg} border ${card.border} rounded-[22px] p-6 lg:p-7 min-h-[240px] transition hover:shadow-lg`}
                   >
                     {/* ICON */}
-                    <img src={card.icon} alt="" className="w-[60px] h-[60px]" />
+                    <img
+                      src={card.icon}
+                      alt={card.title}
+                      className="w-[52px] h-[52px] object-contain"
+                    />
 
                     {/* TITLE */}
-                    <h3 className="text-[clamp(20px,2vw,34px)] font-bold text-black mt-6">
+                    <h3 className="text-[clamp(22px,1.8vw,32px)] leading-[1.3] font-bold text-black mt-5">
                       {card.title}
                     </h3>
 
                     {/* TEXT */}
-                    <p className="text-[clamp(16px,1.2vw,22px)] leading-[1.7] text-[#2d2d2d] mt-4">
+                    <p className="text-[clamp(15px,1vw,19px)] leading-[1.8] text-[#2d2d2d] mt-4">
                       {card.text}
                     </p>
                   </div>
 
                   {/* BUTTON */}
-                  <button className="text-[#2156c9] text-[clamp(18px,1.5vw,28px)] font-medium mt-5">
+                  <button className="text-[#2156c9] text-[18px] lg:text-[22px] font-medium mt-4 hover:underline">
                     {card.button}
                   </button>
                 </div>
@@ -90,11 +95,11 @@ export default function InfoSection() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end relative">
             <img
               src={sectionImage}
               alt="PMAYG"
-              className="w-full max-w-[850px] h-auto object-contain"
+              className="w-full max-w-[760px] object-contain"
             />
           </div>
         </div>

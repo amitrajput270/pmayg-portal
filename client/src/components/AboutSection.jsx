@@ -1,114 +1,114 @@
 import aboutImage from "../assets/12704405_5006436 1.jpg";
-import arrow1 from "../assets/arrow-1.jpg";
-import arrow2 from "../assets/arrow-2.jpg";
+import arrow1 from "../assets/Vector-1.svg";
+import arrow2 from "../assets/Vector-2.svg";
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#fff] py-28 overflow-hidden">
-      <div className="max-w-[1450px] mx-auto px-8">
-        {/* TOP CONTENT */}
+    <section className="bg-white py-[50px] px-[50px] overflow-hidden">
+      {/* FIXED FIGMA WRAPPER */}
+      <div className="absolute w-[1280px] h-[945px] mx-auto">
+        {/* ================= TOP CONTENT ================= */}
         <div className="text-center">
-          <p className="text-[22px] text-gray-700">
+          <p className="text-[18px] text-[#222]">
             About PMAY-G and How It Works?
           </p>
 
-          <h2 className="text-[72px] leading-[90px] font-bold mt-5">
+          <h2 className="w-full text-[30px] leading-[1.2] font-bold mt-4 text-black">
             What is PMAY-G and How It Works?
           </h2>
 
-          <p className="max-w-[1100px] mx-auto text-[30px] leading-[52px] text-[#646b7c] mt-8">
+          <p className="w-[920px] mx-auto text-[17px] leading-[1.8] text-[#636b7d] mt-6">
             Enim urna consequat pellentesque urna adipiscing lacus dictumst
-            velit sed. Adipiscing condimentum viverra tincidunt fermentum.
+            velit sed. Adipiscing condimentum viverra tincidunt fermentum. Nec
+            ultrices vitae mi suspendisse dui non turpis.
           </p>
 
-          <button className="text-[#2156c9] text-[24px] font-medium mt-10">
+          <button className="text-[#2156c9] text-[15px] font-medium mt-8">
             Learn More About PMAYG ≫
           </button>
         </div>
 
-        {/* MAIN GRID */}
-        <div className="relative grid grid-cols-3 gap-10 mt-28">
-          {/* LEFT COLUMN */}
-          <div className="relative">
-            {/* STEP 1 */}
-            <div className="max-w-[430px] ml-10">
-              <p className="text-[#d68a46] text-[20px] uppercase">Step 1</p>
+        {/* ================= STEP 1 ================= */}
+        <div className="absolute left-[200px] top-[291px] w-[329px] h-[174]">
+          <p className="text-[#d68a46] text-[20px] uppercase tracking-wide">
+            Step 1
+          </p>
 
-              <h3 className="text-[30px] leading-[70px] font-bold mt-4">
-                Get Registered
-              </h3>
+          <h3 className="text-[34px] font-medium mt-4 text-black">
+            Get Registered
+          </h3>
 
-              <p className="text-[28px] leading-[50px] text-[#636b7d] mt-10">
-                Enim urna consequat pellentesque urna adipiscing lacus dictumst
-                velit sed.
-              </p>
+          <p className="text-[17px] leading-[2] text-[#636b7d] mt-6">
+            Enim urna consequat pellentesque urna adipiscing lacus dictumst
+            velit sed. Adipis condimentum viverra tincidunt fermentum.
+          </p>
 
-              <button className="text-[#2156c9] text-[24px] font-medium mt-10">
-                Learn How to Get Registered ≫
-              </button>
-            </div>
-            {/* STEP 2 */}
-            <div className="bg-[#f4f8fc] border border-[#dbe8f4] rounded-[28px] p-12 mt-48">
-              <p className="text-[#d68a46] text-[20px] uppercase">Step 2</p>
+          <button className="text-[#2156c9] text-[15px] font-medium mt-8">
+            Learn How to Get Registered ≫
+          </button>
+        </div>
 
-              <h3 className="text-[30px] leading-[66px] font-bold mt-4">
-                Check FTO
-                <br />
-                Payment
-              </h3>
+        {/* ================= CENTER IMAGE ================= */}
+        <div className="absolute left-[631px] top-[260px]">
+          <img
+            src={aboutImage}
+            alt="about"
+            className="w-[512px] h-[512px] object-contain"
+          />
+        </div>
 
-              <p className="text-[28px] leading-[48px] text-[#636b7d] mt-10">
-                Enim urna consequat pellentesque urna adipiscing lacus dictumst
-                velit sed.
-              </p>
+        {/* ================= ARROW 1 ================= */}
+        <img
+          src={arrow1}
+          alt="arrow"
+          className="absolute left-[200px] top-[640px] w-[85px] h-[90px] opacity-100"
+        />
 
-              <button className="text-[#2156c9] text-[24px] font-medium mt-10">
-                Learn How to Check FTO Payment ≫
-              </button>
-            </div>
-          </div>
+        {/* ================= STEP 2 ================= */}
+        <div className="absolute left-[100px] top-[750px] w-[400px] bg-[#f4f8fc] border border-[#dbe8f4] rounded-[22px] p-8">
+          <p className="text-[#d68a46] text-[20px] uppercase tracking-wide">
+            Step 2
+          </p>
 
-          {/* CENTER IMAGE */}
-          <div className="flex justify-right items-start pt-12">
-            <img
-              src={aboutImage}
-              alt="about"
-              className="w-full max-w-[650px]"
-            />
-          </div>
+          <h3 className="text-[32px] leading-[1.3] font-medium mt-4 text-black">
+            Check FTO Payment
+          </h3>
 
-          {/* RIGHT COLUMN */}
-          <div className="relative flex items-end pb-10">
-            {/* ARROW */}
-            <img
-              src={arrow1}
-              alt="arrow"
-              className="absolute -left-[850px]  bottom-[160px] text-[#d8bb77] text-[140px] top-[405px] h-[120px] w-[30px] rotate-[10deg]"
-            />
+          <p className="text-[17px] leading-[2] text-[#636b7d] mt-6">
+            Enim urna consequat pellentesque urna adipiscing lacus dictumst
+            velit sed. Adipis condimentum viverra tincidunt fermentum.
+          </p>
 
-            {/* STEP 3 */}
-            <div className="bg-[#f4f8fc] border border-[#dbe8f4] rounded-[28px] p-12">
-              <p className="text-[#d68a46] text-[20px] uppercase">Step 3</p>
+          <button className="text-[#2156c9] text-[15px] font-medium mt-7">
+            Learn How to Check FTO Payment ≫
+          </button>
+        </div>
 
-              <h3 className="text-[30px] leading-[66px] font-bold mt-4">
-                Track Progress
-              </h3>
+        {/* ================= ARROW 2 ================= */}
+        <img
+          src={arrow2}
+          alt="arrow"
+          className="absolute left-[539px] top-[1000px] w-[93.59px] h-[35.27]  opacity-70"
+        />
 
-              <p className="text-[28px] leading-[48px] text-[#636b7d] mt-10">
-                Enim urna consequat pellentesque urna adipiscing lacus dictumst
-                velit sed.
-              </p>
+        {/* ================= STEP 3 ================= */}
+        <div className="absolute left-[720px] top-[750px] w-[400px] bg-[#f4f8fc] border border-[#dbe8f4] rounded-[22px] p-8">
+          <p className="text-[#d68a46] text-[20px] uppercase tracking-wide">
+            Step 3
+          </p>
 
-              <button className="text-[#2156c9] text-[24px] font-medium mt-10">
-                Learn How to Track Progress ≫
-              </button>
-            </div>
-            <img
-              src={arrow2}
-              alt="arrow"
-              className="absolute -left-[300px]  bottom-[160px] text-[#d8bb77] text-[140px] top-[1000px] h-[25px] w-[140px] rotate-[10deg]"
-            />
-          </div>
+          <h3 className="text-[32px] leading-[1.3] font-medium mt-4 text-black">
+            Track Progress
+          </h3>
+
+          <p className="text-[17px] leading-[2] text-[#636b7d] mt-6">
+            Enim urna consequat pellentesque urna adipiscing lacus dictumst
+            velit sed. Adipis condimentum viverra tincidunt fermentum.
+          </p>
+
+          <button className="text-[#2156c9] text-[15px] font-medium mt-7">
+            Learn How to Track Progress ≫
+          </button>
         </div>
       </div>
     </section>

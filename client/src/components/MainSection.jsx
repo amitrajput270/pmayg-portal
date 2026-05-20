@@ -26,7 +26,7 @@ export default function MainSection() {
         </div>
 
         <div className="relative z-1 -mt-20 flex  justify-center">
-          <div className="grid md:grid-cols-2 w-[1100px]  shadow-2xl">
+          <div className="grid md:grid-cols-2  w-[1100px]  shadow-2xl">
             <div className="bg-[#db8a32] text-white p-4 text-center">
               <h2 className="text-2xl font-bold leading-[30px] uppercase">
                 Citizen /
@@ -42,10 +42,12 @@ export default function MainSection() {
                 Lorem ipsum dolor sit amet consectetur. Morbi massa libero
                 pulvinar elit.
               </p>
-              <button className="border border-white px-10 py-5 rounded-xl mt-10 text-2xl">
-                <Link to={"/citizen-beneficiary"}>Click Here</Link>
-                <span className="ml-3 text-2xl">&#8594;</span>
-              </button>
+              <Link to={"/citizen-beneficiary"}>
+                <button className="border border-white px-10 py-5 rounded-xl mt-10 text-2xl">
+                  Click Here
+                  <span className="ml-3 text-2xl">&#8594;</span>
+                </button>
+              </Link>
             </div>
 
             <div className="bg-[#0d5f99] text-white p-4 text-center">

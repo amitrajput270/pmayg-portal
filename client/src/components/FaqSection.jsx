@@ -91,7 +91,7 @@ export default function FaqSection() {
         </div>
 
         {/* FAQ GRID */}
-        <div className="grid grid-cols-2 gap-8 mt-24">
+        <div className="grid grid-cols-2  gap-8 mt-24">
           {/* LEFT */}
           <div className="space-y-8">
             {faqsLeft.map((item, index) => renderFaq(item, index, "left"))}

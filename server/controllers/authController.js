@@ -1,68 +1,97 @@
 import { query } from "../config/db.js";
 import { compare } from "bcryptjs";
 import { validationResult } from "express-validator";
+import responseHelper from "../helper/responseHelper.js";
+import sanitizeInput from "../utils/sanitize.js";
 
-export async function login(req, res) {
+export const login = async (req, res) => {
     try {
-        // VALIDATION CHECK
+        /**
+         * VALIDATION CHECK
+         */
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({
-                success: false,
-                errors: errors.array(),
-                data: []
-            });
+            return responseHelper.validationError(res, errors);
         }
+
+        /**
+         * REQUEST BODY
+         */
         const {
             financialYear,
-            username,
+            userName,
             password,
         } = req.body;
 
-        // FIND USER
-        const userQuery = await query(
-            "SELECT * FROM users WHERE username = $1",
-            [username]
+        const cleanUserName = sanitizeInput(userName);
+
+        /**
+         * FIND USER
+         */
+        const result = await query(
+            `
+            SELECT
+                id,
+                username,
+                password
+            FROM users
+            WHERE username = $1
+            LIMIT 1
+            `,
+            [cleanUserName]
         );
 
-        // USER NOT FOUND
-        if (userQuery.rows.length === 0) {
-            return res.status(401).json({
-                success: false,
-                message: "Invalid credentials",
-                data: []
-            });
+        /**
+         * USER NOT FOUND
+         */
+        if (result.rows.length === 0) {
+            return responseHelper.validationError(
+                res,
+                {
+                    userName: "Invalid username or password",
+                },
+                "Authentication failed"
+            );
         }
-        const user = userQuery.rows[0];
-        console.log("User found:", user);
+        const user = result.rows[0];
 
-        // PASSWORD CHECK
-        const isMatch = await compare(
+        /**
+         * VERIFY PASSWORD
+         */
+        const isPasswordMatched = await compare(
             password,
             user.password
         );
-        if (!isMatch) {
-            return res.status(401).json({
-                success: false,
-                message: "Invalid credentials",
-                data: []
-            });
+
+        if (!isPasswordMatched) {
+            return responseHelper.validationError(
+                res,
+                {
+                    password: "Invalid password",
+                },
+                "Authentication failed"
+            );
         }
-        return res.json({
-            success: true,
-            message: "Login successful",
-            data: {
+
+        /**
+         * SUCCESS RESPONSE
+         */
+        return responseHelper.success(
+            res,
+            {
                 id: user.id,
-                username: user.username,
+                userName: user.username,
                 financialYear,
             },
-        });
+            "Login successfully..!"
+        );
+
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success: false,
-            message: "Server error",
-            data: []
-        });
+        return responseHelper.error(
+            res,
+            "Something went wrong while processing your request",
+            error,
+            500,
+        );
     }
-}
+};

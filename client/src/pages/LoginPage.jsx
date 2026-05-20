@@ -1,30 +1,35 @@
 import { useEffect, useState } from "react";
-
 import loginIllustration from "../assets/login-illustration.svg";
 import logo from "../assets/logo.svg";
-
 import { FiChevronDown } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { FiKey } from "react-icons/fi";
-
 import Navbar from "../components/Navbar";
+import { loginUser } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     financialYear: "",
-    username: "",
+    userName: "",
     password: "",
     captcha: "",
   });
-
   const [generatedCaptcha, setGeneratedCaptcha] = useState("");
+  const [alert, setAlert] = useState({
+    type: "",
+    message: "",
+  });
 
   const [errors, setErrors] = useState({});
+
+  const [loading, setLoading] = useState(false);
 
   // GENERATE CAPTCHA
   const generateCaptcha = () => {
     const captcha = Math.floor(100000 + Math.random() * 900000).toString();
-
     setGeneratedCaptcha(captcha);
   };
 
@@ -41,6 +46,13 @@ export default function LoginPage() {
       ...prev,
       [name]: value,
     }));
+
+    // CLEAR ERRORS
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+      general: "",
+    }));
   };
 
   // VALIDATION
@@ -50,13 +62,34 @@ export default function LoginPage() {
     if (!formData.financialYear) {
       newErrors.financialYear = "Financial year is required";
     }
+    // financial year format validation (e.g. 2024-2025)
+    const fyRegex = /^\d{4}-\d{4}$/;
+    if (formData.financialYear && !fyRegex.test(formData.financialYear)) {
+      newErrors.financialYear = "Financial year must be in format YYYY-YYYY";
+    }
 
-    if (!formData.username) {
-      newErrors.username = "Username is required";
+    // financial year logical validation (e.g. 2024-2025 is valid but 2025-2024 is not)
+    if (formData.financialYear && fyRegex.test(formData.financialYear)) {
+      const years = formData.financialYear.split("-");
+      if (parseInt(years[0]) >= parseInt(years[1])) {
+        newErrors.financialYear = "Financial year is not valid";
+      }
+    }
+
+    if (!formData.userName) {
+      newErrors.userName = "Username is required";
+    }
+
+    if (formData.userName && formData.userName.length < 3) {
+      newErrors.userName = "Username must be at least 3 characters";
     }
 
     if (!formData.password) {
       newErrors.password = "Password is required";
+    }
+
+    if (formData.password && formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     if (!formData.captcha) {
@@ -73,30 +106,58 @@ export default function LoginPage() {
   };
 
   // FORM SUBMIT
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validate()) return;
+    try {
+      setLoading(true);
+      const payload = {
+        financialYear: formData.financialYear,
+        userName: formData.userName,
+        password: formData.password,
+      };
 
-    console.log("Login Data:", formData);
+      const response = await loginUser(payload);
+      if (response.status) {
+        // SAVE USER DATA
+        localStorage.setItem("user", JSON.stringify(response.data));
+        setAlert({
+          type: "success",
+          message: response.message,
+        });
+        // REDIRECT
+        navigate("/dashboard");
+      } else {
+        console.log(response);
+        setAlert({
+          type: "error",
+          message: response.message || "Login failed",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.data) {
+        const apiResponse = error.response.data;
 
-    alert("Login Successful");
-
-    // API CALL HERE
-    /*
-      axios.post('/login', formData)
-    */
-
-    // RESET FORM
-    setFormData({
-      financialYear: "",
-      username: "",
-      password: "",
-      captcha: "",
-    });
-
-    // GENERATE NEW CAPTCHA
-    generateCaptcha();
+        // FIELD VALIDATION ERRORS
+        if (apiResponse.errors && Object.keys(apiResponse.errors).length > 0) {
+          setErrors(apiResponse.errors);
+        } else {
+          // GLOBAL ERROR
+          setAlert({
+            type: "error",
+            message: apiResponse.message,
+          });
+        }
+      } else {
+        setAlert({
+          type: "error",
+          message: "An unexpected error occurred. Please try again later.",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -104,7 +165,7 @@ export default function LoginPage() {
       <Navbar />
       <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-[1500px] bg-[#f8f8f8] rounded-[18px] shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
-          <div className="grid lg:grid-cols-2 gap-10 items-center p-10 lg:p-16">
+          <div className="grid lg:grid-cols-2  gap-10 items-center p-10 lg:p-16">
             {/* LEFT SIDE */}
             <div>
               <img src={logo} alt="logo" className="w-[150px]" />
@@ -120,10 +181,29 @@ export default function LoginPage() {
 
             {/* RIGHT SIDE */}
             <div className="max-w-[650px] w-full mx-auto">
+              {alert.message && (
+                <div
+                  className={`px-5 py-4 rounded-lg mb-6 text-lg border
+                      ${
+                        alert.type === "success"
+                          ? "bg-green-100 border-green-300 text-green-700"
+                          : ""
+                      }
+                      ${alert.type === "error" ? "bg-red-100 border-red-300 text-red-700" : ""}
+                      ${
+                        alert.type === "warning"
+                          ? "bg-yellow-100 border-yellow-300 text-yellow-700"
+                          : ""
+                      }
+                    `}
+                >
+                  {alert.message}
+                </div>
+              )}
+
               <h2 className="text-[clamp(20px,2vw,64px)] font-bold text-[#183554] text-center lg:text-left">
                 Login Block Panchayat
               </h2>
-
               <form onSubmit={handleSubmit} className="mt-12 space-y-8">
                 {/* FINANCIAL YEAR */}
                 <div>
@@ -162,16 +242,16 @@ export default function LoginPage() {
 
                     <input
                       type="text"
-                      name="username"
-                      value={formData.username}
+                      name="userName"
+                      value={formData.userName}
                       onChange={handleChange}
                       placeholder="Username"
                       className="flex-1 px-5 text-[22px] bg-transparent outline-none"
                     />
                   </div>
 
-                  {errors.username && (
-                    <p className="text-red-500 mt-2">{errors.username}</p>
+                  {errors.userName && (
+                    <p className="text-red-500 mt-2">{errors.userName}</p>
                   )}
                 </div>
 

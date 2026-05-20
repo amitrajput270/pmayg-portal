@@ -25,7 +25,7 @@ export default function DownloadAppSection() {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="grid grid-cols-2 gap-20 items-center mt-24">
+        <div className="grid grid-cols-2  gap-20 items-center mt-24">
           {/* LEFT IMAGE */}
           <div className="flex justify-center">
             <img
@@ -38,7 +38,7 @@ export default function DownloadAppSection() {
           {/* RIGHT CONTENT */}
           <div>
             {/* FEATURES */}
-            <div className="grid grid-cols-2 gap-x-20 gap-y-20">
+            <div className="grid grid-cols-2  gap-x-20 gap-y-20">
               {/* ITEM */}
               <div>
                 <img

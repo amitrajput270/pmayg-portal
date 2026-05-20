@@ -49,7 +49,7 @@ export default function Footer() {
           <div>
             <h3 className="text-[22px] font-bold text-black">Useful Links</h3>
 
-            <div className="grid grid-cols-2 gap-4 mt-10">
+            <div className="grid grid-cols-2  gap-4 mt-10">
               <img src={digitalIndia} alt="" className="w-full" />
               <img src={myGov} alt="" className="w-full" />
 
