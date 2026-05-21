@@ -1,12 +1,9 @@
 import logo from "@assets/images/logo.svg";
-import nicLogo from "@assets/images/nic-logo.svg";
-
+import nicLogo from "@assets/images/nic-logo.png";
 import googlePlay from "@assets/images/google-play.svg";
 import appStore from "@assets/images/app-store.svg";
-
 import htmlLogo from "@assets/images/html-logo.svg";
 import cssLogo from "@assets/images/css-logo.svg";
-
 import digitalIndia from "@assets/images/digital-india.svg";
 import myGov from "@assets/images/mygov.svg";
 import indiaGov from "@assets/images/india-gov.svg";
@@ -15,7 +12,6 @@ import gazette from "@assets/images/gazette.svg";
 import ngsp from "@assets/images/ngsp.svg";
 
 import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
-
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -143,7 +139,7 @@ export default function Footer() {
           <div className="flex items-center gap-[18px]">
             <img src={nicLogo} alt="NIC" className="w-[156px]" />
 
-            <p className="text-[13px] weight-[400]  font-[Roboto] leading-[22px] text-[#18689E]">
+            <p className="text-[13px] weight-[400] font-[Roboto] leading-[22px] text-[#18689E]">
               © Content owned, updated and maintained by{" "}
               <span className="font-semibold">
                 Ministry of Rural Development | GoI
