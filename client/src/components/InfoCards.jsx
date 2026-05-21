@@ -42,18 +42,18 @@ export default function InfoSection() {
   ];
 
   return (
-    <section className="bg-[#f5f5f5] py-16 lg:py-24 overflow-hidden">
+    <section className="py-16 lg:py-4 mt-1 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-5 lg:px-8">
         <div className="grid lg:grid-cols-[55%_45%] gap-10 items-center">
           {/* LEFT CONTENT */}
           <div>
             {/* TITLE */}
-            <h2 className="text-[clamp(38px,4vw,72px)] leading-[1.08] font-bold text-black max-w-[850px]">
+            <h2 className="text-[41px] leading-[1.2] font-medium mt-4 text-black">
               Pradhan Mantri Awaas Yojana-Gramin
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="text-[clamp(18px,1.4vw,24px)] leading-[1.7] text-[#636b7d] mt-6 max-w-[760px]">
+            <p className="text-[17px] leading-[1.7] text-[#636b7d] mt-6 max-w-[760px]">
               Lorem ipsum dolor sit amet consectetur. Ultricies amet posuere ac
               ultrices lectus tellus augue nunc. Semper aliquet condimentum
               rutrum luctus viverra.
@@ -68,25 +68,21 @@ export default function InfoSection() {
                     className={`${card.bg} border ${card.border} rounded-[22px] p-6 lg:p-7 min-h-[240px] transition hover:shadow-lg`}
                   >
                     {/* ICON */}
-                    <img
-                      src={card.icon}
-                      alt={card.title}
-                      className="w-[52px] h-[52px] object-contain"
-                    />
+                    <img src={card.icon} alt={card.title} />
 
                     {/* TITLE */}
-                    <h3 className="text-[clamp(22px,1.8vw,32px)] leading-[1.3] font-bold text-black mt-5">
+                    <h3 className="text-[15px] leading-[1.3] font-medium text-black mt-5">
                       {card.title}
                     </h3>
 
                     {/* TEXT */}
-                    <p className="text-[clamp(15px,1vw,19px)] leading-[1.8] text-[#2d2d2d] mt-4">
+                    <p className="text-[13px] leading-[1.8] text-[#2d2d2d] mt-4">
                       {card.text}
                     </p>
                   </div>
 
                   {/* BUTTON */}
-                  <button className="text-[#2156c9] text-[18px] lg:text-[22px] font-medium mt-4 hover:underline">
+                  <button className="text-[#2156c9] lg:text-[15px] font-medium mt-4 hover:underline">
                     {card.button}
                   </button>
                 </div>

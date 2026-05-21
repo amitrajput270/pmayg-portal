@@ -11,10 +11,10 @@ export default function HomePage() {
       <Navbar />
       <InfoSection />
       <AboutSection />
-      {/* <DownloadAppSection />
+      <DownloadAppSection />
       <FaqSection />
       <SuccessStories />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }

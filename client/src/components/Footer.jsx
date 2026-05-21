@@ -1,4 +1,11 @@
 import logo from "../assets/logo.svg";
+import nicLogo from "../assets/nic-logo.png";
+
+import googlePlay from "../assets/google-play.svg";
+import appStore from "../assets/app-store.svg";
+
+import htmlLogo from "../assets/html-logo.svg";
+import cssLogo from "../assets/css-logo.svg";
 
 import digitalIndia from "../assets/digital-india.svg";
 import myGov from "../assets/mygov.svg";
@@ -7,96 +14,122 @@ import makeIndia from "../assets/make-india.svg";
 import gazette from "../assets/gazette.svg";
 import ngsp from "../assets/ngsp.svg";
 
-import nicLogo from "../assets/nic-logo.png";
-
-import htmlLogo from "../assets/html-logo.svg";
-import cssLogo from "../assets/css-logo.svg";
-
-import playstore from "../assets/google-play.svg";
-import appstore from "../assets/app-store.svg";
-
 import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
 
-import { FiX } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const quickLinks = [
+    "About Us",
+    "Contact Us",
+    "Screen Reading",
+    "Accessibility Statement",
+    "Frequently Asked Questions",
+    "Terms & Conditions",
+  ];
+
+  const usefulLinks = [digitalIndia, indiaGov, myGov, makeIndia, gazette, ngsp];
+
   return (
-    <footer className="bg-[#f5f5f5] pt-20">
+    <footer className="bg-[#F5F5F5] mt-[50px]">
       {/* TOP FOOTER */}
-      <div className="max-w-[1800px] mx-auto bg-[#efefef] px-20 py-24">
-        <div className="grid grid-cols-[320px_1fr_1fr_1fr_280px] gap-20">
-          {/* LOGO */}
+      <div className="max-w-[1700px] mx-auto px-[50px] pt-[60px] pb-[55px]">
+        <div className="grid grid-cols-[220px_1fr_180px] gap-[70px]">
+          {/* LEFT LOGO */}
           <div>
-            <img src={logo} alt="logo" className="w-[260px]" />
+            <img
+              src={logo}
+              alt="PMAYG Logo"
+              className="w-[159px] h-[78px] top-[61px] left-[50px]"
+            />
           </div>
 
-          {/* QUICK LINKS */}
-          <div>
-            <h3 className="text-[22px] font-bold text-black">Quick Links</h3>
+          {/* CENTER CONTENT */}
+          <div className="flex gap-[78px] h-[248px] top-[20px] left-[341px]">
+            {/* QUICK LINKS */}
+            <div>
+              <h3 className="text-[16px] font-bold text-[#333]">Quick Links</h3>
+              <div className="mt-[10px] flex flex-col gap-[13px]">
+                {quickLinks.map((item, index) => (
+                  <Link
+                    key={index}
+                    className="text-[16px] text-[#333] hover:text-[#2156C9] transition"
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-            <ul className="space-y-8 mt-10 text-[20px] text-[#3b3b3b]">
-              <li>About Us</li>
-              <li>Contact Us</li>
-              <li>Screen Reading</li>
-              <li>Accessibility Statement</li>
-              <li>Frequently Asked Questions</li>
-              <li>Terms & Conditions</li>
-            </ul>
-          </div>
+            {/* USEFUL LINKS */}
+            <div className="gap-[100px]">
+              <h3 className="text-[16px] font-bold text-[#333]">
+                Useful Links
+              </h3>
 
-          {/* USEFUL LINKS */}
-          <div>
-            <h3 className="text-[22px] font-bold text-black">Useful Links</h3>
+              <div className="grid grid-cols-2 gap-[10px] mt-[20px]">
+                {usefulLinks.map((item, index) => (
+                  <div
+                    key={index}
+                    className="w-[68px] h-[39px] bg-white rounded-[2px] shadow-[0_1.5px_3.5px_rgba(0,0,0,0.06)] flex items-center justify-center"
+                  >
+                    <img
+                      src={item}
+                      alt=""
+                      className="max-w-[58px] max-h-[30px] object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <div className="grid grid-cols-2  gap-4 mt-10">
-              <img src={digitalIndia} alt="" className="w-full" />
-              <img src={myGov} alt="" className="w-full" />
+            {/* CONTACT */}
+            <div className="gap-[100px]">
+              <h3 className="text-[16px] font-bold text-[#333]">
+                Get In Touch
+              </h3>
 
-              <img src={indiaGov} alt="" className="w-full" />
-              <img src={makeIndia} alt="" className="w-full" />
+              <div className="mt-[24px] space-y-[18px]">
+                <p className="text-[16px] leading-[22px] text-[#333]">
+                  Room No. 361 (B),
+                  <br />
+                  Krishi Bhawan, New Delhi
+                </p>
 
-              <img src={gazette} alt="" className="w-full" />
-              <img src={ngsp} alt="" className="w-full" />
+                <p className="text-[16px] text-[#333]">011-23383006</p>
+              </div>
             </div>
           </div>
 
-          {/* CONTACT */}
-          <div>
-            <h3 className="text-[22px] font-bold text-black">Get In Touch</h3>
-
-            <div className="mt-10 text-[20px] leading-[42px] text-[#3b3b3b]">
-              <p>
-                Room No. 361 (B),
-                <br />
-                Krishi Bhawan, New Delhi
-              </p>
-
-              <p className="mt-8">011-23383006</p>
-            </div>
-          </div>
-
-          {/* SOCIAL + STORE */}
-          <div className="flex flex-col items-end justify-between">
-            {/* SOCIAL */}
-            <div className="flex items-center gap-8 text-[42px] text-black rounded-full p-4 shadow-md">
-              <FiX />
-
-              <FaFacebookF />
-
-              <FaYoutube />
-
-              <FaInstagram />
-            </div>
-
-            {/* STORE BUTTONS */}
-            <div className="space-y-6">
-              <Link to="/download" className="block w-[230px]">
-                <img src={playstore} alt="playstore" className="w-full" />
+          {/* RIGHT SIDE */}
+          <div className="flex flex-col items-end">
+            {/* SOCIAL ICONS */}
+            <div className="flex items-center gap-[18px]">
+              <Link>
+                <IoClose className="text-[32px] text-[#333]" />
               </Link>
+              <Link>
+                {" "}
+                <FaFacebookF className="text-[28px] text-[#333]" />
+              </Link>
+              <Link>
+                {" "}
+                <FaYoutube className="text-[28px] text-[#333]" />
+              </Link>
+              <Link>
+                {" "}
+                <FaInstagram className="text-[32px] text-[#333]" />
+              </Link>
+            </div>
 
-              <Link to="/download" className="block w-[230px]">
-                <img src={appstore} alt="appstore" className="w-full" />
+            {/* APP BUTTONS */}
+            <div className="mt-[140px] flex flex-col gap-[20px]">
+              <Link>
+                <img src={googlePlay} alt="Google Play" className="w-[205px]" />
+              </Link>
+              <Link>
+                <img src={appStore} alt="App Store" className="w-[205px]" />
               </Link>
             </div>
           </div>
@@ -104,41 +137,33 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM FOOTER */}
-      <div className="max-w-[1800px] mx-auto px-20 py-14">
-        <div className="flex items-center justify-between gap-10">
+      <div className="bg-white border-t border-[#F1F1F1]">
+        <div className="max-w-[1700px] mx-auto px-[135px] py-[24px] flex items-center justify-between">
           {/* LEFT */}
-          <div className="flex items-center gap-10">
-            <img src={nicLogo} alt="nic" className="w-[220px]" />
+          <div className="flex items-center gap-[18px]">
+            <img src={nicLogo} alt="NIC" className="w-[156px]" />
 
-            <div className="text-[18px] leading-[36px] text-[#2f5f96]">
-              <p>
-                © Content owned, updated and maintained by
-                <span className="font-bold">
-                  {" "}
-                  Ministry of Rural Development | GoI
-                </span>
-              </p>
-
-              <p>
-                PMAY-G platform is designed, developed and hosted by
-                <span className="font-bold">
-                  {" "}
-                  National Informatics Centre(NIC)
-                </span>
-              </p>
-
-              <p>
-                Visitors: <span className="font-bold">17702</span> Last Updated:{" "}
-                <span className="font-bold">20/11/2024</span>
-              </p>
-            </div>
+            <p className="text-[13px] weight-[400]  font-[Roboto] leading-[22px] text-[#18689E]">
+              © Content owned, updated and maintained by{" "}
+              <span className="font-semibold">
+                Ministry of Rural Development | GoI
+              </span>
+              <br />
+              PMAY-G platform is designed, developed and hosted by{" "}
+              <span className="font-semibold underline">
+                National Informatics Centre(NIC)
+              </span>
+              <br />
+              Visitors: <span className="font-semibold">17702</span> Last
+              Updated: <span className="font-semibold">20-06-2024</span>
+            </p>
           </div>
 
           {/* RIGHT */}
-          <div className="flex items-center gap-6">
-            <img src={htmlLogo} alt="html" className="w-[170px]" />
+          <div className="flex items-center gap-[6px]">
+            <img src={htmlLogo} alt="HTML" className="w-[107px]" />
 
-            <img src={cssLogo} alt="css" className="w-[170px]" />
+            <img src={cssLogo} alt="CSS" className="w-[107px]" />
           </div>
         </div>
       </div>

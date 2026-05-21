@@ -4,21 +4,21 @@ import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
 
 export default function SocialSidebar() {
   return (
-    <div className="absolute right-10 top-[35%] z-50 object-cover">
-      <div className="shadow-md rounded-full bg-white flex flex-col items-center">
-        <button className="w-16 h-16 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-4xl">
+    <div className="absolute right-0 top-[25%] w-[50px] z-10 object-cover">
+      <div className="shadow-md rounded-l-[12px] bg-white flex flex-col items-center">
+        <button className="w-12 h-14 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-4xl">
           <FiX />
         </button>
 
-        <button className="w-16 h-16 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-3xl">
+        <button className="w-12 h-14 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-3xl">
           <FaFacebookF />
         </button>
 
-        <button className="w-16 h-16 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-3xl">
+        <button className="w-12 h-14 border-b border-gray-300 flex items-center justify-center text-[#d48238] text-3xl">
           <FaYoutube />
         </button>
 
-        <button className="w-16 h-16 flex items-center justify-center text-[#d48238] text-3xl">
+        <button className="w-12 h-14 flex items-center justify-center text-[#d48238] text-3xl">
           <FaInstagram />
         </button>
       </div>
