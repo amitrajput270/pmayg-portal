@@ -163,9 +163,9 @@ export default function LoginPage() {
   return (
     <>
       <Navbar />
-      <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-4 py-10">
+      <section className="min-h-screen flex items-center justify-center px-4 py-10">
         {/* MAIN CONTAINER */}
-        <div className="w-full max-w-[976px] min-h-[586px] bg-white rounded-[8px] shadow-[0_0_24px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col lg:flex-row">
+        <div className="w-full max-w-[976px] min-h-[586px] bg-white rounded-[8px] shadow-[0_0_24px_rgba(0,0,0,0.19)] overflow-hidden flex flex-col lg:flex-row">
           {/* LEFT SIDE */}
           <div className="w-full lg:w-1/2 relative bg-white flex flex-col">
             {/* LOGO */}
