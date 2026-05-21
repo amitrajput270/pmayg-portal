@@ -1,10 +1,7 @@
-import mainPageBg from "../assets/main-page-image.svg";
-import beneficiaryBg from "../assets/main-page-image-2.svg";
-
-import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
+import mainPageBg from "@assets/images/main-page-image.svg";
+import beneficiaryBg from "@assets/images/main-page-image-2.svg";
 import { HiArrowRight } from "react-icons/hi";
-import SocialSidebar from "./SocialSidebar";
+import SocialSidebar from "@components/SocialSidebar";
 import { useNavigate } from "react-router-dom";
 
 export default function ManiSection() {

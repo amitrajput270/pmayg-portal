@@ -1,8 +1,10 @@
-import { FiSearch } from "react-icons/fi";
+import { FiChevronDown, FiSearch } from "react-icons/fi";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import emblem_of_India from "../assets/emblem_of_India.svg";
-import logo from "../assets/logo.svg";
+import emblem_of_India from "@assets/images/emblem_of_India.svg";
+import logo from "@assets/images/logo.svg";
+import cleanIndiaIcon from "@assets/images/image-35.svg";
+import accessBilityIcon from "@assets/icons/accessbility-vector.svg";
 
 export default function Navbar() {
   return (
@@ -29,23 +31,19 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-8">
-          {/* <img src="./src/assets/image-35.svg" className="w-30" /> */}
+          <img src={cleanIndiaIcon} className="w-30" />
           <FiSearch className="text-2xl text-gray-600" />
           <div className="w-[1px] h-12 bg-gray-400"></div>
           <HiOutlineLanguage className="text-2xl text-orange-500" />
           <span className="text-1xl">Eng</span>
           <div className="w-[1px] h-12 bg-gray-400"></div>
-
-          <img
-            src="./src/assets/icons/accessbility-vector.svg"
-            className="w-5 color-[#DF5700]"
-          />
-
+          <img src={accessBilityIcon} className="w-5 color-[#DF5700]" />
           <Link
             to="/login"
-            className="bg-[#db8a32] text-white px-8 py-3 rounded-full font-medium"
+            className="bg-[#db8a32] text-white px-5 py-3 rounded-full font-medium"
           >
             Login
+            <FiChevronDown className="inline-block ml-2" />
           </Link>
         </div>
       </div>

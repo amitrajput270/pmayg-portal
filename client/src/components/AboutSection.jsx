@@ -1,6 +1,6 @@
-import aboutImage from "../assets/about-section-image.svg";
-import arrow1 from "../assets/Vector-1.svg";
-import arrow2 from "../assets/Vector-2.svg";
+import aboutImage from "@assets/images/about-section-image.svg";
+import arrow1 from "@assets/images/Vector-1.svg";
+import arrow2 from "@assets/images/Vector-2.svg";
 
 export default function AboutSection() {
   return (

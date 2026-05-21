@@ -1,6 +1,5 @@
-import Navbar from "../components/Navbar";
-import MainSection from "../components/MainSection.jsx";
-import Footer from "../components/Footer.jsx";
+import Navbar from "@components/Navbar";
+import MainSection from "@components/MainSection.jsx";
 
 export default function HomePage() {
   return (

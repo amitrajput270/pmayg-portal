@@ -1,9 +1,9 @@
-import sectionImage from "../assets/info-section.svg";
+import sectionImage from "@assets/images/info-section.svg";
 
-import pmayIcon from "../assets/icons/PMAYG3.svg";
-import eligibilityIcon from "../assets/icon-eligibility.svg";
-import beneficiaryIcon from "../assets/icon-beneficiary.svg";
-import houseIcon from "../assets/icons/construction.svg";
+import pmayIcon from "@assets/icons/PMAYG3.svg";
+import eligibilityIcon from "@assets/images/icon-eligibility.svg";
+import beneficiaryIcon from "@assets/images/icon-beneficiary.svg";
+import houseIcon from "@assets/icons/construction.svg";
 
 export default function InfoSection() {
   const cards = [

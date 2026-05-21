@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 
 import { FiLogOut } from "react-icons/fi";
-import logo from "../assets/logo.svg";
+import logo from "@assets/images/logo.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {

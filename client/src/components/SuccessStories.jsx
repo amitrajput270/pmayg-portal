@@ -1,5 +1,5 @@
-import story1 from "../assets/story-1.svg";
-import story2 from "../assets/story-2.svg";
+import story1 from "@assets/images/story-1.svg";
+import story2 from "@assets/images/story-2.svg";
 
 import { FaPlay } from "react-icons/fa";
 

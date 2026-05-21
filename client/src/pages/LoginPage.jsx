@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import loginIllustration from "../assets/login-illustration.svg";
-import logo from "../assets/logo.svg";
+import loginIllustration from "@assets/images/login-illustration.svg";
+import logo from "@assets/images/logo.svg";
 import { FiChevronDown } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { FiKey } from "react-icons/fi";
-import Navbar from "../components/Navbar";
-import { loginUser } from "../services/authService";
+import Navbar from "@components/Navbar";
+import { loginUser } from "@services/authService";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
@@ -163,51 +163,59 @@ export default function LoginPage() {
   return (
     <>
       <Navbar />
-      <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-16">
-        <div className="w-full max-w-[1500px] bg-[#f8f8f8] rounded-[18px] shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
-          <div className="grid lg:grid-cols-2  gap-10 items-center p-10 lg:p-16">
-            {/* LEFT SIDE */}
-            <div>
-              <img src={logo} alt="logo" className="w-[150px]" />
-
-              <div className="flex justify-center mt-16">
-                <img
-                  src={loginIllustration}
-                  alt="login"
-                  className="w-full max-w-[560px]"
-                />
-              </div>
+      <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-4 py-10">
+        {/* MAIN CONTAINER */}
+        <div className="w-full max-w-[976px] min-h-[586px] bg-white rounded-[8px] shadow-[0_0_24px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col lg:flex-row">
+          {/* LEFT SIDE */}
+          <div className="w-full lg:w-1/2 relative bg-white flex flex-col">
+            {/* LOGO */}
+            <div className="pt-8 pl-8">
+              <img src={logo} alt="logo" className="w-[112px]" />
             </div>
 
-            {/* RIGHT SIDE */}
-            <div className="max-w-[650px] w-full mx-auto">
+            {/* ILLUSTRATION */}
+            <div className="flex-1 flex items-center justify-center px-8 pb-8">
+              <img
+                src={loginIllustration}
+                alt="login"
+                className="w-full max-w-[407px] object-contain"
+              />
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="w-full lg:w-1/2 bg-white flex items-center justify-center px-8 py-10">
+            <div className="w-full max-w-[416px]">
+              {/* ALERT */}
               {alert.message && (
                 <div
-                  className={`px-5 py-4 rounded-lg mb-6 text-lg border
-                      ${
-                        alert.type === "success"
-                          ? "bg-green-100 border-green-300 text-green-700"
-                          : ""
-                      }
-                      ${alert.type === "error" ? "bg-red-100 border-red-300 text-red-700" : ""}
-                      ${
-                        alert.type === "warning"
-                          ? "bg-yellow-100 border-yellow-300 text-yellow-700"
-                          : ""
-                      }
-                    `}
+                  className={`px-4 py-3 rounded-md mb-6 text-sm border
+                ${
+                  alert.type === "success"
+                    ? "bg-green-100 border-green-300 text-green-700"
+                    : ""
+                }
+                ${
+                  alert.type === "error"
+                    ? "bg-red-100 border-red-300 text-red-700"
+                    : ""
+                }
+              `}
                 >
                   {alert.message}
                 </div>
               )}
 
-              <h2 className="text-[clamp(20px,2vw,64px)] font-bold text-[#183554] text-center lg:text-left">
+              {/* TITLE */}
+              <h2 className="text-center text-[28px] leading-[38px] font-extrabold tracking-[1px] text-[#1F384C]">
                 Login Block Panchayat
               </h2>
-              <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+
+              {/* FORM */}
+              <form onSubmit={handleSubmit} className="mt-[36px] space-y-6">
                 {/* FINANCIAL YEAR */}
                 <div>
-                  <label className="block text-[20px] font-medium text-[#3d3d3d] mb-3">
+                  <label className="block text-[14px] font-medium text-[#48536B] mb-1">
                     Financial Year
                   </label>
 
@@ -216,28 +224,28 @@ export default function LoginPage() {
                       name="financialYear"
                       value={formData.financialYear}
                       onChange={handleChange}
-                      className="w-full h-[72px] border border-[#cfcfcf] rounded-[8px] bg-transparent px-6 text-[22px] appearance-none outline-none"
+                      className="w-full h-[44px] border border-[#CECECE] rounded-[4px] px-[22px] text-[14px] text-[#333333] appearance-none outline-none bg-white"
                     >
                       <option value="">Select Financial Year</option>
-
                       <option value="2024-2025">2024-2025</option>
-
                       <option value="2025-2026">2025-2026</option>
                     </select>
 
-                    <FiChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-[32px] text-[#666]" />
+                    <FiChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-[22px] text-[#666]" />
                   </div>
 
                   {errors.financialYear && (
-                    <p className="text-red-500 mt-2">{errors.financialYear}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.financialYear}
+                    </p>
                   )}
                 </div>
 
                 {/* USERNAME */}
                 <div>
-                  <div className="flex border border-[#cfcfcf] rounded-[8px] overflow-hidden h-[72px]">
-                    <div className="w-[72px] bg-[#b5b5b5] flex items-center justify-center">
-                      <FaRegUser className="text-white text-[28px]" />
+                  <div className="h-[44px] border border-[#CECECE] rounded-[4px] overflow-hidden flex">
+                    <div className="w-[44px] bg-[#AAAAAA] flex items-center justify-center">
+                      <FaRegUser className="text-white text-[18px]" />
                     </div>
 
                     <input
@@ -246,20 +254,22 @@ export default function LoginPage() {
                       value={formData.userName}
                       onChange={handleChange}
                       placeholder="Username"
-                      className="flex-1 px-5 text-[22px] bg-transparent outline-none"
+                      className="flex-1 px-4 text-[14px] outline-none"
                     />
                   </div>
 
                   {errors.userName && (
-                    <p className="text-red-500 mt-2">{errors.userName}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.userName}
+                    </p>
                   )}
                 </div>
 
                 {/* PASSWORD */}
                 <div>
-                  <div className="flex border border-[#cfcfcf] rounded-[8px] overflow-hidden h-[72px]">
-                    <div className="w-[72px] bg-[#b5b5b5] flex items-center justify-center">
-                      <FiKey className="text-white text-[28px]" />
+                  <div className="h-[44px] border border-[#CECECE] rounded-[4px] overflow-hidden flex">
+                    <div className="w-[44px] bg-[#AAAAAA] flex items-center justify-center">
+                      <FiKey className="text-white text-[18px]" />
                     </div>
 
                     <input
@@ -268,18 +278,20 @@ export default function LoginPage() {
                       value={formData.password}
                       onChange={handleChange}
                       placeholder="Password"
-                      className="flex-1 px-5 text-[22px] bg-transparent outline-none"
+                      className="flex-1 px-4 text-[14px] outline-none"
                     />
                   </div>
 
                   {errors.password && (
-                    <p className="text-red-500 mt-2">{errors.password}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.password}
+                    </p>
                   )}
                 </div>
 
                 {/* CAPTCHA */}
                 <div>
-                  <label className="block text-[20px] font-medium text-[#3d3d3d] mb-3">
+                  <label className="block text-[14px] font-medium text-[#48536B] mb-1">
                     Captcha
                   </label>
 
@@ -289,24 +301,28 @@ export default function LoginPage() {
                     value={formData.captcha}
                     onChange={handleChange}
                     placeholder="Type Captcha"
-                    className="w-full h-[72px] border border-[#cfcfcf] rounded-[8px] bg-transparent px-6 text-[22px] outline-none"
+                    className="w-full h-[44px] border border-[#CECECE] rounded-[4px] px-[22px] text-[14px] outline-none"
                   />
 
                   {errors.captcha && (
-                    <p className="text-red-500 mt-2">{errors.captcha}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.captcha}
+                    </p>
                   )}
                 </div>
 
-                {/* CAPTCHA BOX */}
-                <div className="flex items-center gap-5">
-                  <div className="w-[230px] h-[72px] bg-[#ece5da] border border-[#cfcfcf] rounded-[6px] flex items-center justify-center text-[34px] tracking-[10px] font-semibold text-[#333]">
-                    {generatedCaptcha}
+                {/* CAPTCHA ROW */}
+                <div className="flex items-center gap-3">
+                  <div className="w-[155px] h-[44px] bg-[#FFFAEF] border border-[#CECECE] rounded-[4px] flex items-center justify-center">
+                    <span className="italic font-semibold tracking-[6px] text-[14px] text-[#333333]">
+                      {generatedCaptcha}
+                    </span>
                   </div>
 
                   <button
                     type="button"
                     onClick={generateCaptcha}
-                    className="text-[#3f33b6] text-[24px] font-medium"
+                    className="text-[14px] font-medium text-[#3D2CB6] hover:underline"
                   >
                     Get Captcha
                   </button>
@@ -315,9 +331,10 @@ export default function LoginPage() {
                 {/* LOGIN BUTTON */}
                 <button
                   type="submit"
-                  className="w-full h-[78px] rounded-[12px] bg-[#cc802e] text-white text-[28px] font-semibold mt-8 transition hover:bg-[#b86d1d]"
+                  disabled={loading}
+                  className="w-full h-[44px] bg-[#3D2CB6] rounded-[8px] text-white text-[14px] font-semibold hover:bg-[#2f2196] transition disabled:opacity-70"
                 >
-                  Login
+                  {loading ? "Please wait..." : "Login"}
                 </button>
               </form>
             </div>

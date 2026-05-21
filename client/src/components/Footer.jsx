@@ -1,18 +1,18 @@
-import logo from "../assets/logo.svg";
-import nicLogo from "../assets/nic-logo.png";
+import logo from "@assets/images/logo.svg";
+import nicLogo from "@assets/images/nic-logo.svg";
 
-import googlePlay from "../assets/google-play.svg";
-import appStore from "../assets/app-store.svg";
+import googlePlay from "@assets/images/google-play.svg";
+import appStore from "@assets/images/app-store.svg";
 
-import htmlLogo from "../assets/html-logo.svg";
-import cssLogo from "../assets/css-logo.svg";
+import htmlLogo from "@assets/images/html-logo.svg";
+import cssLogo from "@assets/images/css-logo.svg";
 
-import digitalIndia from "../assets/digital-india.svg";
-import myGov from "../assets/mygov.svg";
-import indiaGov from "../assets/india-gov.svg";
-import makeIndia from "../assets/make-india.svg";
-import gazette from "../assets/gazette.svg";
-import ngsp from "../assets/ngsp.svg";
+import digitalIndia from "@assets/images/digital-india.svg";
+import myGov from "@assets/images/mygov.svg";
+import indiaGov from "@assets/images/india-gov.svg";
+import makeIndia from "@assets/images/make-india.svg";
+import gazette from "@assets/images/gazette.svg";
+import ngsp from "@assets/images/ngsp.svg";
 
 import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
 

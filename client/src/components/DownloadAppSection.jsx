@@ -1,13 +1,8 @@
-import mobileImage from "../assets/mockuuups-female-hand-holding-iphone-14-pro-mockup 2.jpg";
-import houseIcon from "../assets/icons/house.svg";
-import loginIcon from "../assets/icons/login.svg";
-import allocationIcon from "../assets/icons/allocation.svg";
-import immigrationIcon from "../assets/icons/immigration.svg";
-
-import { FaHouseUser } from "react-icons/fa6";
-import { MdOutlineVerifiedUser } from "react-icons/md";
-import { HiMiniUserGroup } from "react-icons/hi2";
-import { FaUserCheck } from "react-icons/fa";
+import mobileImage from "@assets/images/downloadcradImage.svg";
+import houseIcon from "@assets/icons/house.svg";
+import loginIcon from "@assets/icons/login.svg";
+import allocationIcon from "@assets/icons/allocation.svg";
+import immigrationIcon from "@assets/icons/immigration.svg";
 
 export default function DownloadAppSection() {
   return (
@@ -28,7 +23,7 @@ export default function DownloadAppSection() {
         <div className="grid grid-cols-2  gap-20 items-center mt-2">
           {/* LEFT IMAGE */}
           <div className="flex justify-center left-[158px] w-[493.42572021484375px] top-[215px] h-[551px]">
-            <img src={mobileImage} alt="mobile" className="bg-[#f5f5f5]" />
+            <img src={mobileImage} alt="mobile" />
           </div>
 
           {/* RIGHT CONTENT */}

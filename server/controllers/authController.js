@@ -48,7 +48,7 @@ export const login = async (req, res) => {
             return responseHelper.validationError(
                 res,
                 {
-                    userName: "Invalid username or password",
+                    userName: "Provided username does not exist",
                 },
                 "Authentication failed"
             );
@@ -67,7 +67,7 @@ export const login = async (req, res) => {
             return responseHelper.validationError(
                 res,
                 {
-                    password: "Invalid password",
+                    password: "Provided password is incorrect",
                 },
                 "Authentication failed"
             );
