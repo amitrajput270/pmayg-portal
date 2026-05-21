@@ -35,9 +35,9 @@ export default function Navbar() {
           <FiSearch className="text-2xl text-gray-600" />
           <div className="w-[1px] h-12 bg-gray-400"></div>
           <HiOutlineLanguage className="text-2xl text-orange-500" />
-          <span className="text-1xl">Eng</span>
+          <span className="font-semimedium">Eng</span>
           <div className="w-[1px] h-12 bg-gray-400"></div>
-          <img src={accessBilityIcon} className="w-5 color-[#DF5700]" />
+          <img src={accessBilityIcon} className="w-4.8 color-[#db8a32]" />
           <Link
             to="/login"
             className="bg-[#db8a32] text-white px-5 py-3 rounded-full font-medium"

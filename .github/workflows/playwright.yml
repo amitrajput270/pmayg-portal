@@ -1,0 +1,26 @@
+name: Playwright E2E
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install client dependencies
+        run: |
+          cd client
+          npm ci
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: |
+          cd client
+          npm run test:e2e
