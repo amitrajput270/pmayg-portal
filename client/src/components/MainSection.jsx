@@ -93,7 +93,10 @@ export default function ManiSection() {
           </p>
 
           {/* BUTTON */}
-          <button className="mt-9 border border-white rounded-[7px] px-5 py-2 flex items-center gap-3 text-white font-medium text-[16px] font-['Roboto_Slab'] hover:bg-white hover:text-[#18689E] transition">
+          <button
+            onClick={() => navigate("/citizen-beneficiary")}
+            className="mt-9 border border-white rounded-[7px] px-5 py-2 flex items-center gap-3 text-white font-medium text-[16px] font-['Roboto_Slab'] hover:bg-white hover:text-[#18689E] transition"
+          >
             Click Here
             <HiArrowRight className="text-[24px]" />
           </button>
